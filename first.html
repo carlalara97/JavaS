@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+
+<h2>JavaScript</h2>
+
+<p id= "quadr"></p>
+<p id= "parimp"></p>
+<p id = "recquad"></p>
+<p id = "fact"></p>
+<p id = "mayor"></p>
+<p id = "mcmmcd"></p>
+<p id = "otrafunc"></p>
+
+<script>
+var x = 5;
+var y = 4;
+var list = [1, 2, 3, 4];
+
+document.getElementById("quadr").innerHTML = "· El quadrat de valor " + x + " és: " + Quadrat(x);
+
+document.getElementById("parimp").innerHTML = "· El nombre " + x + " és " + ParOImpar(x);
+
+document.getElementById("recquad").innerHTML = "· Segons els valors " + x + " i " + y + " tenim un " + RectOQuadr(x, y);
+
+document.getElementById("fact").innerHTML = "· El nombre factorial de " + x + " és " + Factorial(x);
+
+document.getElementById("mayor").innerHTML = "· El elemento mas grande del conjunto de elementos de la lista és " + Mayor(list);
+
+document.getElementById("mcmmcd").innerHTML = "· El MCM de los valores " + x + " y " + y + " és: " + mcm(x, y) + "; Y el MCD és: " + mcd(x, y);
+
+document.getElementById("otrafunc").innerHTML = "· Estamos llamando a otra funcion que calcula el quadrado del elemento " + y + " y el resultado és: " + Recall(y);
+
+function Quadrat(a) {
+	return a * a;
+}
+
+function ParOImpar(a) {
+	if (a%2 == 0) return "par";
+	return "impar";
+}
+
+function RectOQuadr(a, b) {
+	if (a != b) return "rectangle";
+	return "quadrat";
+}
+
+function Factorial (a) {
+	if (a == 0) return 1;
+	return a*Factorial(a-1);
+}
+
+function Mayor (z) {
+	var maj = z[0];
+	for (var i = 1; i < z.length; ++i) {
+		if (maj < z[i]) maj = z[i];
+	}
+	return maj;
+}
+
+function mcd(a, b) {
+	return (b == 0)? a : mcd(b, a % b);
+}
+
+function mcm(a, b) {
+	return (a*b)/mcd(a,b);
+}
+
+function Recall(y) {
+	return Quadrat(y);
+}
+
+</script>
+
+</body>
+</html>
