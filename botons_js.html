@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="botons.css">
+</head>
+
+<body>
+
+<div id="verm"></div>
+<div class="blau"></div>
+<div class="blau"></div>
+<button class="button button1" onclick="eliminaVerm()">Primer</button>
+<button class="button button2" onclick="eliminaBlau()">Segon</button>
+<button class="button button3" onclick="eliminaTot()">Segon</button>
+
+<script>
+	function eliminaVerm() {
+		var carli = document.getElementById('verm');
+		if (carli.style.display == "none") carli.style.display = "block";
+		else carli.style.display = "none";
+	}
+
+	function eliminaBlau() {
+		var carli = document.getElementsByClassName('blau');
+		for (var i = 0; i < carli.length; ++i) {
+			if (carli[i].style.display == "none") carli[i].style.display = "block";
+			else carli[i].style.display = "none";
+		}
+	}
+
+	function eliminaBoto() {
+		var carli = document.getElementsByClassName('button3');
+		carli[0].style.display = "none";
+	}
+
+	function eliminaTot() {
+		setTimeout(eliminaVerm, 1000);
+		setTimeout(eliminaBlau, 2000);
+		setTimeout(eliminaBoto, 3000);
+	}
+
+</script>
+
+</body>
+</html>
