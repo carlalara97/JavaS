@@ -1,0 +1,52 @@
+	table, th, td {
+		border: 1px solid black;
+		border-collapse:collapse;
+	}
+
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.topnav {
+  overflow: hidden;
+  display: inline;
+}
+
+.topnav .search-container {
+  float: left;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  font-size: 17px;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-right: 5px;
+  background: #ddd;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+.pre {
+	float:left;
+	font-size: 17px;
+	padding: 6px;
+	margin-right: 5px;
+}
+
+.post {
+	font-size: 17px;
+	padding: 6px;
+	margin:0;
+}

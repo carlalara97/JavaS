@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" type="text/css" href="diseny.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var original_id = 549;
+
+            function funcio_get(original_id) {
+                $.get("https://www.pokeapi.co/api/v2/pokemon/" + original_id + "/", function(pokemon) {
+
+                    var identifier = pokemon.id;
+                    if (identifier == null) alert("The pokemon with the interested id does not exists.");
+                    var img_norm = pokemon.sprites.front_default;
+                    var img_norm2 = pokemon.sprites.back_default;
+                    var img_shiny = pokemon.sprites.front_shiny;
+                    var img_shiny2 = pokemon.sprites.back_shiny;
+                    var nom = pokemon.name;
+                    var tipos = pokemon.types;
+
+                    $("#pkmid").html(identifier);
+                    $("#img1").html('<img src="' + img_norm + '">');
+                    $("#img12").html('<img src="' + img_norm2 + '">');
+                    $("#img2").html('<img src="' + img_shiny + '">');
+                    $("#img21").html('<img src="' + img_shiny2 + '">');
+                    $("#nom").html(nom);
+                    $("#tipus").html(tipos[0].type.name);
+                    if(tipos.length >= 1) $("#tipus").html(tipos[0].type.name + " and " + tipos[1].type.name);
+
+                }, "json" );
+            }
+
+            $(window).on("load", funcio_get(original_id));
+
+            $(".pre").click(function(){
+                original_id--;
+                funcio_get(original_id);
+            });
+            $(".post").click(function(){
+                original_id++;
+                funcio_get(original_id);
+            });
+            $(".srch").click(function(){
+                var input = $("#myInput").val();
+                original_id = input;
+                funcio_get(original_id);
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th colspan="2">Normal Sprite</th>
+        <th colspan="2">Shiny Sprite</th> 
+        <th>Name</th>
+        <th>Type</th>
+    </tr>
+    <tr>
+        <td id="pkmid"></th>
+        <td id="img1"></td>
+        <td id="img12"></td>
+        <td id="img2"></td>
+        <td id="img21"></td>
+        <td id="nom"></td>
+        <td id="tipus"></td>
+    </tr>
+</table>
+
+    <div class="topnav">
+        <button class="pre">Previous</button>
+        <div class="search-container">
+            <input type="text" placeholder="Search by ID.." name="search" id="myInput">
+            <button class="srch"><i class="fa fa-search"></i></button>
+        </div>
+        <button class="post">Next</button>
+    </div>
+
+</body>
+</html>
